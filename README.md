@@ -80,7 +80,8 @@ This project is licensed under the **Apache License 2.0**. See the [LICENSE](htt
 
 ## Contact
 
-For questions or feedback, please contact you can find way to contact me at my website:  http://moxiu33.github.io/
+For questions or feedback, please contact, you can find way to contact me at my website:  http://moxiu33.github.io/
+
 ---
 
 Enjoy generating secure passwords with the passgen-py! 🔒
