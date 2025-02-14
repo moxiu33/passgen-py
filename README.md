@@ -41,7 +41,7 @@ To run the Password Generator Application, you need the following:
      ```bash
      git clone https://github.com/moxiu33/passgen-py.git
      ```
-   - Or download a prebuild binary from [Releases](https://github.com/moxiu33/passgen-py/releases/tag/v1.0) and extract it
+   - Or download a prebuild binary from [Releases](https://github.com/moxiu33/passgen-py/releases/tag/v1.1) and extract it
 
 ---
 
