@@ -18,7 +18,7 @@ from PyQt6.QtWidgets import (
     QTextBrowser,
 )
 from PyQt6.QtGui import QPalette, QColor
-from PyQt6.QtCore import Qt, QSettings, QUrl
+from PyQt6.QtCore import Qt, QSettings
 
 # Constants for character sets
 LOWERCASE = "abcdefghijklmnopqrstuvwxyz"
@@ -58,14 +58,15 @@ class AdvancedPassGen(QMainWindow):
                 background-color: #f0f0f0;
                 border: 1px solid #ccc;
                 font-size: 14px;
+                color: #000000; /* Default text color */
             }
             QListWidget::item {
                 padding: 10px;
-                color: black; /* Default text color */
+                color: #000000; /* Default text color */
             }
             QListWidget::item:selected {
                 background-color: #0078d7;
-                color: black; /* Keep text color black when selected */
+                color: #ffffff; /* White text when selected */
             }
         """)
         self.sidebar.currentRowChanged.connect(self.switch_page)
@@ -99,6 +100,14 @@ class AdvancedPassGen(QMainWindow):
         self.length_spinbox = QSpinBox()
         self.length_spinbox.setRange(4, 50)
         self.length_spinbox.setValue(12)
+        self.length_spinbox.setStyleSheet("""
+            QSpinBox {
+                background-color: #ffffff;
+                color: #000000;
+                border: 1px solid #ccc;
+                padding: 5px;
+            }
+        """)
         length_layout.addWidget(self.length_spinbox)
         layout.addLayout(length_layout)
 
@@ -147,6 +156,8 @@ class AdvancedPassGen(QMainWindow):
                 font-size: 14px;
                 border: 1px solid #ccc;
                 border-radius: 5px;
+                background-color: #ffffff;
+                color: #000000;
             }
         """)
         layout.addWidget(self.password_lineedit)
@@ -180,6 +191,14 @@ class AdvancedPassGen(QMainWindow):
         self.theme_combobox = QComboBox()
         self.theme_combobox.addItems(["light", "dark"])
         self.theme_combobox.setCurrentText(self.theme)
+        self.theme_combobox.setStyleSheet("""
+            QComboBox {
+                background-color: #ffffff;
+                color: #000000;
+                border: 1px solid #ccc;
+                padding: 5px;
+            }
+        """)
         theme_layout.addWidget(self.theme_combobox)
         layout.addLayout(theme_layout)
 
@@ -264,20 +283,21 @@ class AdvancedPassGen(QMainWindow):
     def apply_theme(self, theme):
         palette = QPalette()
         if theme == "dark":
+            # Dark mode palette
             palette.setColor(QPalette.ColorRole.Window, QColor(53, 53, 53))
-            palette.setColor(QPalette.ColorRole.WindowText, Qt.GlobalColor.white)
+            palette.setColor(QPalette.ColorRole.WindowText, QColor(255, 255, 255))
             palette.setColor(QPalette.ColorRole.Base, QColor(35, 35, 35))
-            palette.setColor(QPalette.ColorRole.Text, Qt.GlobalColor.white)
+            palette.setColor(QPalette.ColorRole.Text, QColor(255, 255, 255))
             palette.setColor(QPalette.ColorRole.Button, QColor(53, 53, 53))
-            palette.setColor(QPalette.ColorRole.ButtonText, Qt.GlobalColor.white)
+            palette.setColor(QPalette.ColorRole.ButtonText, QColor(255, 255, 255))
         else:
-            # Light mode
+            # Light mode palette
             palette.setColor(QPalette.ColorRole.Window, QColor(240, 240, 240))
-            palette.setColor(QPalette.ColorRole.WindowText, Qt.GlobalColor.black)
-            palette.setColor(QPalette.ColorRole.Base, Qt.GlobalColor.white)
-            palette.setColor(QPalette.ColorRole.Text, Qt.GlobalColor.black)
+            palette.setColor(QPalette.ColorRole.WindowText, QColor(0, 0, 0))
+            palette.setColor(QPalette.ColorRole.Base, QColor(255, 255, 255))
+            palette.setColor(QPalette.ColorRole.Text, QColor(0, 0, 0))
             palette.setColor(QPalette.ColorRole.Button, QColor(240, 240, 240))
-            palette.setColor(QPalette.ColorRole.ButtonText, Qt.GlobalColor.black)
+            palette.setColor(QPalette.ColorRole.ButtonText, QColor(0, 0, 0))
         QApplication.setPalette(palette)
 
 if __name__ == "__main__":
